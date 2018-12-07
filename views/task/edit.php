@@ -26,7 +26,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li>Приветствуем вас, admin<a href="/admin/logout"> <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Выйти</a> </li>
+                        <li>                   <a href="/login/enter"> <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Войти как админ</a> </li>
                 </ul>
             </div>
         </div>
