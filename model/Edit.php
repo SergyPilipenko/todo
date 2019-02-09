@@ -1,15 +1,11 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Sergeys
- * Date: 11.08.2018
- * Time: 12:26
- */
+
 class Edit
 {
     public static function edittask($id)
     {
+        $task = strip_tags($_POST['task']);
         // Соединение с БД
         $db = Db::getConnection();
         // Текст запроса к БД
@@ -23,10 +19,10 @@ class Edit
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
 
-        $result->bindParam(':task', $_POST['task'], PDO::PARAM_STR);
+        $result->bindParam(':task', $task, PDO::PARAM_STR);
 
         $result->bindParam(':status', $_POST['status'], PDO::PARAM_INT);
-        return  $result->execute();
+        return $result->execute();
     }
 
 

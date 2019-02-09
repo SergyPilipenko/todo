@@ -1,15 +1,10 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Sergeys
- * Date: 09.08.2018
- * Time: 17:13
- */
-require_once ROOT.'/model/Admin.php';
-include_once ROOT.'/model/Select.php';
-include_once ROOT.'/components/Pagination.php';
-include_once ROOT.'/model/Task.php';
+
+require_once ROOT . '/model/Admin.php';
+include_once ROOT . '/model/Select.php';
+include_once ROOT . '/components/Pagination.php';
+include_once ROOT . '/model/Task.php';
 
 class AdminController
 {
@@ -18,23 +13,29 @@ class AdminController
     {
         $result = Select::getTasks($page);
         $total = Task::getTotalTasks();
-        $pagination = new Pagination($total,$page,3,'page-');
+        $pagination = new Pagination($total, $page, 3, 'page-');
 
 
-        Admin::isAdmin();
+        $_SESSION['admin'] = Admin::isAdmin();
 
 
-       if( isset($_SESSION['admin'])) {
-           require_once ROOT . '/views/admin/admin.php';
-       }else{
-           require_once ROOT . '/views/enter/admin.php';
-       }
-
-
+        if (isset($_SESSION['admin'])) {
+            require_once ROOT . '/views/admin/admin.php';
+        } else {
+            require_once ROOT . '/views/admin/login.php';
+        }
 
 
         return true;
 
+    }
+
+    public function actionEnter()
+    {
+
+
+        require_once(ROOT . '/views/admin/login.php');
+        return true;
     }
 
 }

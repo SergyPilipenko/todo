@@ -1,7 +1,9 @@
 <?php
+
 /*
  * Класс Pagination для генерации постраничной навигации
  */
+
 class Pagination
 {
     /**
@@ -34,6 +36,7 @@ class Pagination
      *
      */
     private $limit;
+
     /**
      * Запуск необходимых данных для навигации
      * @param type $total <p>Общее количество записей</p>
@@ -55,6 +58,7 @@ class Pagination
         # Устанавливаем номер текущей страницы
         $this->setCurrentPage($currentPage);
     }
+
     /**
      *  Для вывода ссылок
      * @return HTML-код со ссылками навигации
@@ -92,6 +96,7 @@ class Pagination
         # Возвращаем html
         return $html;
     }
+
     /**
      * Для генерации HTML-кода ссылки
      * @param integer $page - номер страницы
@@ -110,6 +115,7 @@ class Pagination
         return
             '<li><a href="' . $currentURI . $this->index . $page . '">' . $text . '</a></li>';
     }
+
     /**
      *  Для получения, откуда стартовать
      *
@@ -136,6 +142,7 @@ class Pagination
         return
             array($start, $end);
     }
+
     /**
      * Для установки текущей страницы
      *
@@ -155,6 +162,7 @@ class Pagination
             # Устанавливаем страницу на первую
             $this->current_page = 1;
     }
+
     /**
      * Для получения общего числа страниц
      *

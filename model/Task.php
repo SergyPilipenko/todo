@@ -25,8 +25,18 @@ class Task
             $result->bindParam(':email', $options['email'], PDO::PARAM_STR);
             $result->bindParam(':task', $options['task'], PDO::PARAM_STR);
             $result->bindParam(':image', $options['image'], PDO::PARAM_STR);
-            return $result->execute();
+            $result->execute();
 
+
+            $sql2 = 'SELECT id FROM tasks ORDER BY id DESC ';
+            // Используется подготовленный запрос
+            $result2 = $db->prepare($sql2);
+
+            // Выполнение коменды
+            $result2->execute();
+            // Возвращаем значение count - количество
+            $row = $result2->fetch();
+            return $row;
 
 
         } catch (\PDOException $e) {
@@ -34,12 +44,8 @@ class Task
         }
 
 
-
-
-
-
-
     }
+
     public static function getTotalTasks()
     {
         // Соединение с БД

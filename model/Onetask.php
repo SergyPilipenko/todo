@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Sergeys
- * Date: 11.08.2018
- * Time: 10:50
- */
+
 class Onetask
 {
     public static function overview($id)
